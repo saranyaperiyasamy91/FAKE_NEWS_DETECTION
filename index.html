@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fake News Detector</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #6625cf0c;
+        }
+
+        .box {
+            width: 1000px;
+            margin: 100px auto;
+            background: white;
+            padding: 55px;
+            border-radius: 16px;
+            box-shadow: 0px 15px 40px rgba(0,0,0,0.1);
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .title {
+            font-size: 56px;          /* BIG TITLE */
+            color: #2563eb;           /* BLUE COLOR */
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #555;
+            font-size: 16px;
+        }
+
+        /* ===== TEXT AREA ===== */
+        textarea {
+            width: 100%;
+            height: 220px;
+            padding: 16px;
+            margin-top: 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+        }
+
+        /* ===== BUTTON ===== */
+        button {
+            width: 100%;
+            padding: 18px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            font-size: 18px;
+            margin-top: 22px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1e40af;
+        }
+
+        /* ===== RESULT ===== */
+        .result {
+            margin-top: 35px;
+            font-size: 26px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .confidence {
+            font-size: 16px;
+            margin-top: 8px;
+            display: block;
+        }
+
+        .real {
+            color: green;
+        }
+
+        .fake {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="title">🛡️ Fake News Detector</div>
+        <div class="subtitle">
+            Analyze news articles using AI-powered detection
+        </div>
+    </div>
+
+    <!-- FORM -->
+    <form action="/predict" method="post">
+        <textarea name="news_text" placeholder="Paste news text here..." required></textarea>
+        <button type="submit">Analyze News</button>
+    </form>
+
+    <!-- RESULT -->
+    {% if result %}
+        <div class="result {{ color }}">
+            {{ result }}
+            <span class="confidence">{{ confidence }}</span>
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
